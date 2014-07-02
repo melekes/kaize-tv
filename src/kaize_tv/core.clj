@@ -1,10 +1,25 @@
 (ns kaize-tv.core
-  (:require [ring.adapter.jetty :as jetty]))
+  (:use [compojure.core :only (defroutes)]
+        [ring.adapter.jetty :as ring])
+  (:require [compojure.route :as route]
+            [compojure.handler :as handler]
+            [kaize-tv.controllers.presentations :as presentations]
+            [kaize-tv.views.layout :as layout]
+            [kaize-tv.migrations.presentations :as schema])
+  (:gen-class))
 
-(defn app [req]
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "Hello"})
+(defroutes routes
+  presentations/routes
+  (route/resources "/")
+  (route/not-found (layout/not-found)))
 
-(defn -main [port]
-  (jetty/run-jetty app {:port (Integer. port) :join? false}))
+(def application (handler/site routes))
+
+(defn start [port]
+  (run-jetty application {:port port
+                          :join? false}))
+
+(defn -main []
+  (schema/migrate)
+  (let [port (Integer/parseInt (or (System/getenv "PORT") "8080"))]
+    (start port)))
