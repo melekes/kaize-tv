@@ -18,7 +18,7 @@
                         [:name :varchar "NOT NULL"]
                         [:description :varchar "NOT NULL"]
                         [:author :varchar "NOT NULL"]
-                        [:presented_on :date "NOT NULL"]
+                        [:presented_on :date]
                         [:updated_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]
                         [:created_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]))
     (println " done")))

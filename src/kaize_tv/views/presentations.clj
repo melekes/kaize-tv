@@ -3,9 +3,9 @@
   (:require [kaize-tv.views.layout :as layout]))
 
 (defn- presentations-list [presentations]
-  [:div {:class "presentations-list"}
+  [:div {:class "articles-list"}
    (map
-    (fn [p] [:h2 {:class "presentation"} (h (:body p))])
+    (fn [p] [:h1 {:class "article"} (h (:name p))])
     presentations)])
 
 (defn index [presentations]
