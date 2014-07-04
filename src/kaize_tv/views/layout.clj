@@ -1,6 +1,5 @@
 (ns kaize-tv.views.layout
-  (:use [hiccup.core :only (html)]
-        [hiccup.page :only (html5 include-css)]))
+  (:use [hiccup.page :only (html5 include-css)]))
 
 (defn common [title & body]
   (html5

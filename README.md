@@ -13,7 +13,7 @@
 
 Чтобы запустить веб-сервер выполняем:
 
-    DATABASE_URL="..." lein run -m kaize-tv.core
+    DATABASE_URL="..." lein ring server
 
 ## FAQ
 
