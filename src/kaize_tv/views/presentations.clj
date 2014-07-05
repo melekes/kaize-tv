@@ -5,7 +5,10 @@
 (defn- presentations-list [presentations]
   [:div {:class "articles-list"}
    (map
-    (fn [p] [:h1 {:class "article"} (h (:name p))])
+    (fn [p] [:article
+             [:h1 (h (:name p))]
+             [:p [:small (str "by " (h (:author p)) " at " (h (:presented_at p)) " (" (h (:presented_on p)) ")")]]
+             [:p (h (:description p))]])
     presentations)])
 
 (defn index [presentations]
