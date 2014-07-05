@@ -11,8 +11,7 @@
                  [hiccup "1.0.4"]
                  [ring-server "0.3.1"]]
   :plugins [[lein-ring "0.8.11"]]
-  :ring {:handler kaize-tv.handler/app
-         :init kaize-tv.handler/init}
+  :ring {:handler kaize-tv.handler/app}
   :aot :all
   :profiles
   {:production

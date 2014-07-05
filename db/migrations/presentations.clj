@@ -1,4 +1,4 @@
-(ns kaize-tv.migrations.presentations
+(ns db.migrations.presentations
   (:require [clojure.java.jdbc :as sql]
             [kaize-tv.models.presentation :as presentation]))
 
@@ -18,7 +18,8 @@
                         [:name :varchar "NOT NULL"]
                         [:description :varchar "NOT NULL"]
                         [:author :varchar "NOT NULL"]
-                        [:presented_on :date]
+                        [:presented_on :date "NOT NULL"]
+                        [:presented_at :varchar "NOT NULL"]
                         [:updated_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]
                         [:created_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]))
     (println " done")))
