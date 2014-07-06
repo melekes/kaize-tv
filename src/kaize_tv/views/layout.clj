@@ -15,7 +15,7 @@
    [:body
     [:div {:class "header-container"}
      [:header {:class "wrapper clearfix"}
-      [:h1 {:class "title"} "KaizeTv"]]]
+      [:h1 {:class "title"} "Kaize TV"]]]
     [:div {:class "main-container"} [:div {:class "main wrapper clearfix"} body]]]))
 
 (defn not-found []

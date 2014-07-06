@@ -7,3 +7,5 @@
 (defn all []
   (into [] (sql/query spec ["select * from presentations order by id desc"])))
 
+(defn find_by_id [id]
+  (into {} (sql/query spec ["select * from presentations where id = ?", (Integer/parseInt id)])))

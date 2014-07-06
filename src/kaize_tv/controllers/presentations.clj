@@ -6,5 +6,9 @@
 (defn index []
   (view/index (model/all)))
 
+(defn show [id]
+  (view/show (model/find_by_id id)))
+
 (defroutes routes
-  (GET  "/" [] (index)))
+  (GET  "/" [] (index))
+  (GET  ["/:id" :id #"[0-9]+"] [id] (show id)))
