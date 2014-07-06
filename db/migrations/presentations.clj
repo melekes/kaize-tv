@@ -20,6 +20,8 @@
                         [:author :varchar "NOT NULL"]
                         [:presented_on :date "NOT NULL"]
                         [:presented_at :varchar "NOT NULL"]
+                        [:url :varchar]
+                        [:path :varchar]
                         [:updated_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]
                         [:created_at :timestamp "NOT NULL" "DEFAULT CURRENT_TIMESTAMP"]))
     (println " done")))
