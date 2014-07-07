@@ -24,6 +24,18 @@
 
 [Дискуссия на тему "Стоит ли использовать Clojure для web разработки"](https://groups.google.com/d/topic/clojure/ZxUUBlYf1ck/discussion)
 
+## Разработка
+
+Накатываем миграции в REPL (временно):
+
+    (load-file "db/migrations/presentations.clj")
+    (db.migrations.presentations/migrate)
+
+Накатываем seeds в REPL:
+
+    (load-file "db/seeds.clj")
+    (db.seeds/run)
+
 ## License
 
 Copyright © 2014 Anton Kalyaev
