@@ -5,12 +5,10 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/java.jdbc "0.3.4"]
-                 [org.postgresql/postgresql "9.3-1101-jdbc41"]
                  [compojure "1.1.8"]
                  [hiccup "1.0.4"]
                  [ring-server "0.3.1"]]
-  :plugins [[lein-ring "0.8.11"]]
+  :plugins [[lein-ring "0.8.11"] ]
   :ring {:handler kaize-tv.handler/app}
   :aot :all
   :profiles
