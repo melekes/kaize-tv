@@ -7,7 +7,11 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.8"]
                  [hiccup "1.0.4"]
-                 [ring-server "0.3.1"]]
+                 [ring-server "0.3.1"]
+                 [cheshire "5.3.1"]
+                 [me.raynes/fs "1.4.4"]
+                 [clj-stacktrace "0.2.7"]
+                 [lein-kibit "0.0.8"]]
   :plugins [[lein-ring "0.8.11"] ]
   :ring {:handler kaize-tv.handler/app}
   :aot :all
