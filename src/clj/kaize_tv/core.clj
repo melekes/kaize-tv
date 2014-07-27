@@ -1,4 +1,4 @@
-(ns kaize-tv.handler
+(ns kaize-tv.core
   (:require [compojure.core :refer [GET defroutes]]
             [compojure.handler :as handler]
             [compojure.route :as route]

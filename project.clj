@@ -3,7 +3,9 @@
   :url "http://tv.kaize.ru"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+
   :source-paths ["src/clj"]
+
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.1.8"]
                  [ring/ring-core "1.3.0"]
@@ -13,17 +15,32 @@
                  [cljs-http "0.1.15"]
                  [om "0.6.5"]
                  [com.facebook/react "0.11.1"]]
+
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
             [lein-pdo "0.1.1"]]
-  :ring {:handler kaize-tv.handler/app}
+
+  :aliases {"up" ["pdo" "cljsbuild" "auto" "dev," "ring" "server-headless"]}
+
+  :min-lein-version "2.0.0"
+  :uberjar-name "kaize-tv-standalone.jar"
+
+  :ring {:handler kaize-tv.core/app}
+
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src/cljs"]
                         :compiler {:output-to "resources/public/js/app.js"
                                    :output-dir "resources/public/js/out"
                                    :optimizations :none
-                                   :source-map true}}]}
-  :aliases {"up" ["pdo" "cljsbuild" "auto" "dev," "ring" "server-headless"]}
+                                   :source-map true}}
+                       {:id "release"
+                        :source-paths ["src/cljs"]
+                        :compiler {:output-to "resources/public/js/app.js"
+                                   :optimizations :advanced
+                                   :pretty-print false
+                                   :preamble ["react/react.min.js"]
+                                   :externs ["react/externs/react.js"]}}]}
+
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring-mock "0.1.5"]]}})
