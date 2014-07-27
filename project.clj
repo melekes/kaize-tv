@@ -18,7 +18,8 @@
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
-            [lein-pdo "0.1.1"]]
+            [lein-pdo "0.1.1"]
+            [lein-ancient "0.5.5"]]
 
   :aliases {"up" ["pdo" "cljsbuild" "auto" "dev," "ring" "server-headless"]}
 
