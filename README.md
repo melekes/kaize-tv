@@ -3,17 +3,17 @@
 Веб-морда для просмотра презентаций [kaize](https://github.com/kaize), а также
 презентаций проводимых в рамках встреч сообщества [Ulcamp-dev](https://www.facebook.com/groups/ulcamp.dev/)
 
-## Зависимости
+## Запуск
 
 Вам понадобится [Leiningen][1].
 
-[1]: https://github.com/technomancy/leiningen
+Подтягиваем зависимости:
 
-## Запуск
+    lein deps
 
 Чтобы запустить веб-сервер выполняем:
 
-    lein ring server-headless
+    lein up
 
 ## FAQ
 
@@ -30,3 +30,5 @@ Copyright © 2014 Anton Kalyaev
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
+
+[1]: https://github.com/technomancy/leiningen
