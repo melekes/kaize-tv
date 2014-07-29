@@ -15,17 +15,9 @@
           (>! c (vec presentations))))
     c))
 
-(defn om-app [app owner]
-  (om/component
-    (dom/div nil
-             (om/build presentation-box app
-                       {:opts {:url "/api/presentations"
-                               :poll-interval 2000}}))))
-
 (defn presentation [{:keys [name]} owner opts]
   (om/component
    (dom/li nil name)))
-
 
 (defn presentation-list [{:keys [presentations]}]
   (om/component
@@ -49,7 +41,15 @@
             (dom/h1 nil "Presentations")
             (om/build presentation-list app))))
 
+(defn om-app [app owner]
+  (om/component
+    (dom/div nil
+             (om/build presentation-box app
+                       {:opts {:url "/api/presentations"
+                               :poll-interval 2000}}))))
+
 (def app-state
   (atom {}))
 
-(om/root app-state om-app (.getElementById js/document "content"))
+(om/root app-state om-app
+         {:target (. js/document (getElementById "content"))})
