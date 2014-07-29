@@ -31,7 +31,9 @@
   (reify
     om/IInitState
     (init-state [_]
-                (om/transact! app [:presentations] (fn [] [])))
+                (do
+                  (om/transact! app [:presentations] (fn [] []))
+                  {}))
     om/IWillMount
     (will-mount [_]
                 (go (while true
