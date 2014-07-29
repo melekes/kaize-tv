@@ -4,7 +4,8 @@
             [cljs.core.async :refer [put! <! >! chan timeout]]
             [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs-http.client :as http]))
+            [cljs-http.client :as http]
+            [clojure.string :as string]))
 
 (enable-console-print!)
 
@@ -18,14 +19,22 @@
           (>! c (vec presentations))))
     c))
 
-(defn presentation [{:keys [title]} owner opts]
+(defn presentation [presentation owner opts]
   (om/component
-   (dom/li nil title)))
+   (dom/div nil
+            (dom/h1 nil (:title presentation))
+            (dom/p nil (str "by "
+                            (string/join ", " (map (fn [s] (:title s)) (:speakers presentation) ))
+                            " at "
+                            (:title (:location presentation) )))
+            (dom/p nil (:description presentation))
+            (dom/ul nil
+                    (apply (fn [t] (dom/li nil (:title t))) (:tags presentation)) ))))
 
 (defn presentation-list [{:keys [presentations]}]
   (om/component
-   (apply dom/ul nil
-          (om/build-all presentation presentations))))
+    (apply dom/div nil
+           (om/build-all presentation presentations))))
 
 (defn presentation-box [app owner opts]
   (reify
