@@ -18,9 +18,9 @@
           (>! c (vec presentations))))
     c))
 
-(defn presentation [{:keys [name]} owner opts]
+(defn presentation [{:keys [title]} owner opts]
   (om/component
-   (dom/li nil name)))
+   (dom/li nil title)))
 
 (defn presentation-list [{:keys [presentations]}]
   (om/component
@@ -39,7 +39,7 @@
                 (go (while true
                       (let [presentations (<! (fetch-presentations (:url opts)))]
                         (.log js/console (pr-str presentations))
-                        (om/update! app #(assoc % :presentations presentations)))
+                        (om/update! app [:presentations] presentations))
                       (<! (timeout (:poll-interval opts))))))
     om/IRender
     (render [_]
