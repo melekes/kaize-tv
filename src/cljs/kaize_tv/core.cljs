@@ -8,6 +8,9 @@
 
 (enable-console-print!)
 
+(def app-state
+  (atom {}))
+
 (defn fetch-presentations
   [url]
   (let [c (chan)]
@@ -38,18 +41,18 @@
                       (<! (timeout (:poll-interval opts))))))
     om/IRender
     (render [_]
-            (dom/h1 nil "Presentations")
-            (om/build presentation-list app))))
+      (dom/div nil
+               (dom/h1 nil "Presentations")
+               (om/build presentation-list app)))))
 
 (defn om-app [app owner]
-  (om/component
-    (dom/div nil
-             (om/build presentation-box app
-                       {:opts {:url "/api/presentations"
-                               :poll-interval 2000}}))))
+  (reify
+    om/IRender
+    (render [_]
+      (dom/div nil
+               (om/build presentation-box app
+                         {:opts {:url "/api/presentations"
+                                 :poll-interval 2000}})))))
 
-(def app-state
-  (atom {}))
-
-(om/root app-state om-app
+(om/root om-app app-state
          {:target (. js/document (getElementById "content"))})
