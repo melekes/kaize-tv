@@ -4,16 +4,17 @@
             [compojure.route :as route]
             [ring.util.response :refer [resource-response response]]
             [ring.middleware.json :as middleware]
-            [cheshire.core :as cheshire]))
+            [cheshire.core :as cheshire]
+            [me.raynes.fs :as fs]))
 
-(defn- files []
+(defn- find-files []
   "List files under presentations directory"
-  (file-seq (clojure.java.io/file "presentations")))
+  (fs/find-files "presentations" #".*\.json"))
 
 (defn get-presentations [n]
   "List presentations"
-  (let [files (take n files)]
-    (response (map #(cheshire/parse-string (slurp %)) files) )))
+  (let [files (take n (find-files))]
+    (response (map #(cheshire/parse-string (slurp %)) files))))
 
 (defroutes app-routes
   (GET  "/" [] (resource-response "index.html" {:root "public"}))

@@ -15,7 +15,8 @@
                  [cljs-http "0.1.15"]
                  [om "0.6.5"]
                  [com.facebook/react "0.11.1"]
-                 [cheshire "5.3.1"]]
+                 [cheshire "5.3.1"]
+                 [me.raynes/fs "1.4.4"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
