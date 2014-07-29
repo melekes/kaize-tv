@@ -14,12 +14,12 @@
                  [org.clojure/core.async "0.1.303.0-886421-alpha"]
                  [cljs-http "0.1.15"]
                  [om "0.6.5"]
-                 [com.facebook/react "0.11.1"]]
+                 [com.facebook/react "0.11.1"]
+                 [cheshire "5.3.1"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-ring "0.8.11"]
-            [lein-pdo "0.1.1"]
-            [lein-ancient "0.5.5"]]
+            [lein-pdo "0.1.1"]]
 
   :aliases {"up" ["pdo" "cljsbuild" "auto" "dev," "ring" "server-headless"]}
 
@@ -43,5 +43,8 @@
                                    :externs ["react/externs/react.js"]}}]}
 
   :profiles
-  {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-                        [ring-mock "0.1.5"]]}})
+  {:dev
+   {:plugins [[com.cemerick/austin "0.1.4"]
+              [lein-ancient "0.5.5"]]
+    :dependencies [[javax.servlet/servlet-api "2.5"]
+                   [ring-mock "0.1.5"]]}})
